@@ -4,7 +4,7 @@ The script is meant to run on a active used computer that is on 24/7
 
 ## Sceenshots
 
-![Running and starting](/screenhots/Screenshot_20200731_041305.png "Running and starting")
+![Running and starting](/screenshots/Screenshot_20200731_041305.png "Running and starting")
 
 ## Dependencies
 - xprintidle
