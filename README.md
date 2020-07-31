@@ -1,6 +1,10 @@
 # idleminer-xmrig
 A simple bash script to detect when computer is idle, and start xmrig
+The script is meant to run on a active used computer that is on 24/7
 
+## Sceenshots
+
+![Running and starting](/screenhots/Screenshot_20200731_041305.png "Running and starting")
 
 ## Dependencies
 - xprintidle
