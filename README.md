@@ -3,7 +3,13 @@ A simple bash script to detect when computer is idle, and start xmrig
 The script is meant to run on a active used computer that is on 24/7
 
 ## Sceenshots
+*Sound was last heard 30 seconds ago, last movement was 16 seconds ago*
+![counting up](/screenshots/Screenshot_20200731_053636.png "counting up")
 
+*Sound was last heard 885 seconds ago, last movement was 37 seconds ago*
+![counting up](/screenshots/Screenshot_20200731_055052.png "counting up")
+
+*Idle has begun, starting xmrig*
 ![Running and starting](/screenshots/Screenshot_20200731_041305.png "Running and starting")
 
 ## Dependencies
