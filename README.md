@@ -60,4 +60,4 @@ Running the script as root is recommended to get the best hash value
 
 
 ## Known bugs
-`pacmd list-sink-inputs` returns `No PulseAudio daemon running, or not running as session daemon.`
+`pacmd list-sink-inputs` returns `No PulseAudio daemon running, or not running as session daemon.` (This has been commented out)
