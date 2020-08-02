@@ -14,7 +14,7 @@ The script is meant to run on a active used computer that is on 24/7
 
 ## Dependencies
 - xprintidle
-- [xrig](https://github.com/xmrig/xmrig) (the file executable)
+- [xmrig](https://github.com/xmrig/xmrig) (the file executable)
 
 ## Setting up
 Download the idleminer.sh script, open it in the editor, and set the `xmrigDir` variable to the correct location.
