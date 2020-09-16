@@ -14,13 +14,20 @@ The script is meant to run on a active used computer that is on 24/7
 
 ## Dependencies
 - xprintidle
-- [xmrig](https://github.com/xmrig/xmrig) (the file executable)
+
+## Possible dependencies
+- [xmrig](https://github.com/xmrig/xmrig)
+- [ethminer](https://github.com/ethereum-mining/ethminer)
+- [BFGMiner](http://bfgminer.org/)
 
 ## Setting up
-Download the idleminer.sh script, open it in the editor, and set the `xmrigDir` variable to the correct location.
+Download the idleminer.sh script, open it in the editor, and set the `executables` variable to the desired command(s) / location(s).
 It might look something like this:
 
-    xmrigDir="/home/username/Downloads/xmrig-6.3.0/";
+    executables=(
+        "xmrig -c /home/chiya/.config/xmrig/monero.json"
+        "ethminer -G -P stratum1+tcp://[YOUR ETHEREUM WALLET]@eu1.ethpool.org:3333"
+    );
 
 On the top of the script, there is also a few variables you can change:
 
@@ -28,18 +35,19 @@ On the top of the script, there is also a few variables you can change:
     sleepValue=3;
     
     # Idle seconds before starting xmrig
-    startAt=180;
+    startAt=480;
     
     # Number of times signs of user movement before stopping xmrig
     # Setting this to 0 might cause the program to start and stop many times during idle
     # Setting this too high might cause it to not stop at all
     # Recommend between 3 and 10
-    userBackRetries=5;
+    userBackRetries=3;
     
-    # Path to xmrig
-    xmrigDir="/home/chiya/Downloads/xmrig-6.3.0/";
-    # In case the name is changed
-    xmrigName="xmrig";
+    # Path to executables (path(s) and/or command(s) works)
+    executables=(
+        "xmrig -c /home/chiya/.config/xmrig/monero.json"
+        "ethminer -G -P stratum1+tcp://[YOUR ETHEREUM WALLET]@eu1.ethpool.org:3333"
+    );
     
     
     # It wasn't so easy to detect if any sound is being played
