@@ -17,6 +17,19 @@
 #  // User adjustments
 ##
 
+
+
+echo "Remember to edit the bash script before running!"
+exit
+# Comment these 2 lines out when you've set the "executables" variables
+
+
+# Path to executables (path(s) and/or command(s) works)
+executables=(
+    "xmrig -c /home/chiya/.config/xmrig/monero.json" # in my example, I set xmrig and ethminer to run
+    "ethminer -G -P stratum1+tcp://[YOUR ETHEREUM WALLET]@eu1.ethpool.org:3333"
+);
+
 # Time between each check
 sleepValue=3;
 
@@ -27,12 +40,7 @@ startAt=480;
 # Setting this to 0 might cause the program to start and stop many times during idle
 # Setting this too high might cause it to not stop at all
 # Recommend between 3 and 10
-userBackRetries=5;
-
-# Path to xmrig
-xmrigDir="/home/chiya/Downloads/xmrig-6.3.0/";
-# In case the name is changed
-xmrigName="xmrig";
+userBackRetries=3;
 
 
 # It wasn't so easy to detect if any sound is being played
@@ -65,8 +73,11 @@ statusBox="$PURPLE script  $RESETCOLOR"
 
 
 
+# Aaaaand the rest...
+
 check_if_running(){
-    isItRunning=$(pgrep $xmrigName)
+    stringarray=($i2); firstword=${stringarray[0]};
+    isItRunning=$(pgrep -f $firstword)
     get_syntaxBox;
     if [[ $? != 0 ]]; then
         echo -e "$syntaxBox Application is not running";
@@ -86,23 +97,29 @@ check_if_running(){
 
 
 stop_mining(){
-    check_if_running;
-    get_syntaxBox;
-    if [ "$isRunning" -eq "120109114105103" ]; then # 120109114105103 to prevent accidental kill of process 0
-        echo -e "$syntaxBox Skipping process termination";
-        xmrigRunning=1;
-    else
-        echo -e "$syntaxBox Mining Stopped!";
-        kill -2 $isRunning;
-        sleep 3
-    fi
+    for i2 in "${executables[@]}"; do
+        check_if_running;
+        get_syntaxBox;
+        if [ "$isRunning" -eq "120109114105103" ]; then # 120109114105103 to prevent accidental kill of process 0
+            echo -e "$syntaxBox Skipping process termination";
+            xmrigRunning=1;
+        else
+            kill -2 $isRunning;
+            echo -e "$syntaxBox Stopping: $i2";
+            sleep 3
+        fi
+    done
+    echo -e "$syntaxBox Mining Stopped!";
 }
 
 start_mining(){
     get_syntaxBox;
     echo ""
     echo -e "$syntaxBox Mining Started!";
-    $xmrigDir$xmrigName &
+    #$xmrigDir$xmrigName &
+    for i in "${executables[@]}"; do
+        $i &
+    done
 }
 
 get_time(){
