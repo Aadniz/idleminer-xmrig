@@ -1,5 +1,5 @@
 # idleminer-xmrig
-A simple bash script to detect when computer is idle, and start xmrig
+A simple bash script to detect when computer is idle, and start mining softwares of choice
 The script is meant to run on a active used computer that is on 24/7
 
 ## Sceenshots
