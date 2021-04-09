@@ -20,9 +20,8 @@
 
 # Path to executables (path(s) and/or command(s) works)
 executables=(
-    "xmrig -c /home/chiya/.config/xmrig/monero.json" # in my example, I set xmrig and ethminer to run
+    "xmrig -c /home/chiya/.config/xmrig/monero.json" # in my example, I set xmrig and GMiner to run
     "miner --algo cuckatoo31 --server mwc.2miners.com:1111 --user 2aHR0cDovL295aXE1b2tmYmR2dTRucnhnYXliZ2c0amR1MjRtczRsYm11dDV6bGFna2RhcjZ5dGZoazN2M2lkLm9uaW9u.bigminer"
-    "/usr/lib/jvm/java-15-openjdk/bin/java -jar /home/chiya/IdeaProjects/myfirstjava/out/artifacts/myfirstjava_jar/myfirstjava.jar"
 );
 
 # Time between each check
