@@ -54,7 +54,7 @@ On the top of the script, there is also a few variables you can change:
     # Some programs will be detected as playing sound even tho it might not
     #
     # Please open all the programs you normally have open, make sure no sounds are being played, and run this command:
-    #   pacmd list-sink-inputs | grep -c 'state: RUNNING'
+    #   pactl list | grep -c 'State: RUNNING'
     #
     # This will be your standpoint of what "no sound" is.
     # Normally, it will be 0, but some programs ( like kdenlive ) will increse this number to 1 even if no sound is played.
@@ -65,7 +65,3 @@ Running the script as root is recommended to get the best hash value
 
     sudo su
     bash idleminer.sh
-
-
-## Known bugs
-`pacmd list-sink-inputs` returns `No PulseAudio daemon running, or not running as session daemon.` (This has been commented out)
