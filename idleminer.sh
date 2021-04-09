@@ -18,23 +18,18 @@
 ##
 
 
-
-echo "Remember to edit the bash script before running!"
-exit
-# Comment these 2 lines out when you've set the "executables" variables
-
-
 # Path to executables (path(s) and/or command(s) works)
 executables=(
     "xmrig -c /home/chiya/.config/xmrig/monero.json" # in my example, I set xmrig and ethminer to run
-    "ethminer -G -P stratum1+tcp://[YOUR ETHEREUM WALLET]@eu1.ethpool.org:3333"
+    "miner --algo cuckatoo31 --server mwc.2miners.com:1111 --user 2aHR0cDovL295aXE1b2tmYmR2dTRucnhnYXliZ2c0amR1MjRtczRsYm11dDV6bGFna2RhcjZ5dGZoazN2M2lkLm9uaW9u.bigminer"
+    "/usr/lib/jvm/java-15-openjdk/bin/java -jar /home/chiya/IdeaProjects/myfirstjava/out/artifacts/myfirstjava_jar/myfirstjava.jar"
 );
 
 # Time between each check
 sleepValue=3;
 
 # Idle seconds before starting xmrig
-startAt=480;
+startAt=500;
 
 # Number of times signs of user movement before stopping xmrig
 # Setting this to 0 might cause the program to start and stop many times during idle
@@ -91,7 +86,7 @@ check_if_running(){
         fi
     else
         echo -e "$syntaxBox Application is not running";
-        isRunning="120109114105103"
+        isRunning="120109114105100"
     fi
 }
 
@@ -104,9 +99,14 @@ stop_mining(){
             echo -e "$syntaxBox Skipping process termination";
             xmrigRunning=1;
         else
-            kill -2 $isRunning;
-            echo -e "$syntaxBox Stopping: $i2";
-            sleep 3
+            if [ "$isRunning" -eq "120109114105100" ]; then # 120109114105103 to prevent accidental kill of process 0, not running
+                echo -e "$syntaxBox Continuing";
+                sleep 3
+            else
+                kill -2 $isRunning;
+                echo -e "$syntaxBox Stopping: $i2";
+                sleep 3
+            fi
         fi
     done
     echo -e "$syntaxBox Mining Stopped!";
@@ -133,8 +133,8 @@ get_syntaxBox(){
 }
 
 while :; do
-    #idleSound=$(pacmd list-sink-inputs | grep -c 'state: RUNNING');
-    idleSound="0"
+    idleSound=$(sudo -u '#1000' XDG_RUNTIME_DIR=/run/user/1000 pactl list | grep -c 'State: RUNNING');
+    #idleSound="0"
 
     # Idle screen in ms
     tempidleScreen=$(xprintidle);
