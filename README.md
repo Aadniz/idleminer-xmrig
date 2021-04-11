@@ -65,3 +65,6 @@ Running the script as root is recommended to get the best hash value
 
     sudo su
     bash idleminer.sh
+
+## Known bugs
+idleminer will fail to kill the process if there is more than 1 name existing.
