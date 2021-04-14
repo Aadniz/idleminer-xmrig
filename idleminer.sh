@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 ##
 #  // General Info
@@ -20,8 +20,8 @@
 
 # Path to executables (path(s) and/or command(s) works)
 executables=(
-    "xmrig -c /home/chiya/.config/xmrig/monero.json" # in my example, I set xmrig and GMiner to run
-    "miner --algo cuckatoo31 --server mwc.2miners.com:1111 --user 2aHR0cDovL295aXE1b2tmYmR2dTRucnhnYXliZ2c0amR1MjRtczRsYm11dDV6bGFna2RhcjZ5dGZoazN2M2lkLm9uaW9u.bigminer"
+    "xmrig -c /home/USERNAME/.config/xmrig/monero.json" # in my example, I set xmrig and gminer to run
+    "miner --algo cuckatoo31 --server mwc.2miners.com:1111 --user WALLETADDRESS.MINERNAME"
 );
 
 # Time between each check
@@ -136,7 +136,7 @@ while :; do
     #idleSound="0"
 
     # Idle screen in ms
-    tempidleScreen=$(xprintidle);
+    tempidleScreen=$(sudo -u '#1000' XDG_RUNTIME_DIR=/run/user/1000 DISPLAY=:0 xprintidle);
     # Idle screen in s
     idleScreen=$((tempidleScreen / 1000));
 
