@@ -61,10 +61,80 @@ On the top of the script, there is also a few variables you can change:
     noSoundValue=0
 
 ## Usage
-Running the script as root is recommended to get the best hash value
+*Running the script as root is recommended to get the best hash value*
+
+### Running it directly
 
     sudo su
     bash idleminer.sh
+
+---
+
+### Setting up as a service
+
+    sudo su
+    nano /etc/systemd/system/idleminer.service
+Paste in this content:
+
+    [Unit]
+    Description=Mining script
+    After=network.target
+    
+    [Service]
+    Type=forking
+    ExecStart=/path/to/idleminer.sh
+    TimeoutStartSec=8
+
+    [Install]
+    WantedBy=multi-user.target
+    
+Save, and update the systemd with:
+
+    systemctl daemon-reload
+    systemctl enable idleminer.service
+    systemctl start idleminer.service
+    
+### Setting up as a service (with screen)
+
+Make a screen script, and save it somewhere.
+Content of that file might look something like this:
+
+    #!/bin/bash
+    screen -mdS MININGSCRIPT /path/to/idleminer.sh
+
+Then create the service, but point to the screen script instead of the idleminer.sh script
+
+    sudo su
+    nano /etc/systemd/system/idleminer.service
+Paste in this content:
+
+    [Unit]
+    Description=Mining script
+    After=network.target
+    
+    [Service]
+    Type=forking
+    ExecStart=/path/to/screen/idleminer.sh
+    TimeoutStartSec=8
+
+    [Install]
+    WantedBy=multi-user.target
+
+Save, and update the systemd with:
+
+    systemctl daemon-reload
+    systemctl enable idleminer.service
+    systemctl start idleminer.service
+    
+Now lastly, you can monitor the script by doing this:
+
+    sudo su
+    # Check running screens
+    screen -list
+    # Hopefully it's only 1 screen running, just do:
+    screen -r
+    
+Then you can detach by doing `CTRL + A` and then press `d`
 
 ## Known bugs
 idleminer will fail to kill the process if there is more than 1 name existing.
