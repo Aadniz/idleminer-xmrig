@@ -137,4 +137,5 @@ Now lastly, you can monitor the script by doing this:
 Then you can detach by doing `CTRL + A` and then press `d`
 
 ## Known bugs
-idleminer will fail to kill the process if there is more than 1 name existing.
+* idleminer will fail to kill the process if there is more than 1 name existing.
+* Does not work on Wayland
