@@ -8,8 +8,8 @@
 #
 
 # Creator:
-#   psudo name:     D3falt (aka: Typewar / Aadniz)
-#   GitHub:         https://github.com/D3faIt
+#   psudo name:     Aadniz (aka: Typewar / D3faIt)
+#   GitHub:         https://github.com/Aadniz
 #   Creation date:  30-07-2020
 
 
